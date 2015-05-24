@@ -1,0 +1,7 @@
+<div class="alert alert-warning alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    {% if Lang.has('cornerstone::alerts.warning') %}
+        <h4><i class="fa fa-warning"></i> {{ trans('cornerstone::alerts.warning') }}</h4>
+    {% endif %}
+    {{ message | raw }}
+</div>

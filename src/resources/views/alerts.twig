@@ -1,0 +1,12 @@
+{% set alert_types = [
+    'success',
+    'info',
+    'warning',
+    'error',
+] %}
+
+{% for alert_type in alert_types %}
+    {% if Session.has(alert_type) %}
+        {% include 'cornerstone::alerts.' ~ alert_type with { message: Session.pull(alert_type) } %}
+    {% endif %}
+{% endfor %}

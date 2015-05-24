@@ -1,0 +1,7 @@
+<div class="alert alert-success alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    {% if Lang.has('cornerstone::alerts.success') %}
+        <h4><i class="fa fa-check-circle"></i> {{ trans('cornerstone::alerts.success') }}</h4>
+    {% endif %}
+    {{ message | raw }}
+</div>

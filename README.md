@@ -31,3 +31,28 @@ Helper function for pluralization. Actually a wrapper for `Lang::choice`.
 `function trans_choice($key, $count = 0, $locale = null)`
 
 Example usage: `echo trans_choice('messages.apples', 10);`
+
+
+### Macros
+
+#### alert
+
+Wrapper for `alert()` (see above) to use in Views.
+
+`Html::macro('alert', function($type, $message)`
+
+#### back
+
+Renders a back link. Takes an optional action or tries to use JavaScript.
+
+`Html::macro('back', function($action = null)`
+
+Example usage: `Html::back()` or `Html::back('SomeController@someMethod')`
+
+#### is_active
+
+Checks if current request matches certain controllers and returns `active` if so. Useful for highlighting corresponding navigation items.
+
+`Html::macro('is_active', function($controllers, array $css_classes = ['active'])`
+
+Example usage: `Html::is_active('SomeController')` or `Html::is_active(['SomeController', 'OtherController'])`. You may also specify the css classes to return with `$css_classes`.

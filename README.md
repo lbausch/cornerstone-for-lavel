@@ -41,6 +41,8 @@ Wrapper for `alert()` (see above) to use in Views.
 
 `Html::macro('alert', function($type, $message)`
 
+Example usage: `Html::alert('error', 'This didn\'t work')`
+
 #### back
 
 Renders a back link. Takes an optional action or tries to use JavaScript.

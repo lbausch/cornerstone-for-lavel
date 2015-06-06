@@ -68,4 +68,4 @@ An interface for Repositories. See `src/Repositories/BaseRepositoryInterface.php
 
 #### EloquentAbstractRepository
 
-Abstract implementation for Eloquent of the above interface. Provides default implementation to extend on. See `src/Repositories/EloquentAbstractRepository` for actual implementation.
+Abstract implementation for Eloquent of the above interface. Provides default implementation to extend on. See `src/Repositories/EloquentAbstractRepository.php` for actual implementation.

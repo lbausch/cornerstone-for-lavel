@@ -58,3 +58,14 @@ Checks if current request matches certain controllers and returns `active` if so
 `Html::macro('is_active', function($controllers, array $css_classes = ['active'])`
 
 Example usage: `Html::is_active('SomeController')` or `Html::is_active(['SomeController', 'OtherController'])`. You may also specify the css classes to return with `$css_classes`.
+
+
+### Repositories
+
+#### BaseRepositoryInterface
+
+An interface for Repositories. See `src/Repositories/BaseRepositoryInterface.php` for methods you need to implement.
+
+#### EloquentAbstractRepository
+
+Abstract implementation for Eloquent of the above interface. Provides default implementation to extend on. See `src/Repositories/EloquentAbstractRepository` for actual implementation.

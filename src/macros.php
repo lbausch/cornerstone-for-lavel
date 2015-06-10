@@ -1,17 +1,16 @@
 <?php
 
 /**
- * alert
+ * alert.
  */
-Html::macro('alert', function($type, $message) {
+Html::macro('alert', function ($type, $message) {
     return alert($type, $message);
 });
 
-
-/**
+/*
  * back button
  */
-Html::macro('back', function($action = null) {
+Html::macro('back', function ($action = null) {
     if (is_null($action)) {
         $href = '/';
         $onclick = 'window.history.back();return false;';
@@ -20,14 +19,13 @@ Html::macro('back', function($action = null) {
         $onclick = '';
     }
 
-    return '<a href="' . $href . '" onclick="' . $onclick . '">&larr; ' . trans('cornerstone::macros.back') . '</a>';
+    return '<a href="'.$href.'" onclick="'.$onclick.'">&larr; '.trans('cornerstone::macros.back').'</a>';
 });
 
-
-/**
+/*
  * CSS class for active menu items
  */
-Html::macro('is_active', function($controllers, array $css_classes = ['active']) {
+Html::macro('is_active', function ($controllers, array $css_classes = ['active']) {
     if (!is_array($controllers)) {
         $controllers = [$controllers];
     }

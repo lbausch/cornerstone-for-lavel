@@ -4,18 +4,18 @@ namespace Bausch\LaravelCornerstone\Repositories;
 
 abstract class EloquentAbstractRepository implements BaseRepositoryInterface
 {
-
     /**
-     * Model
-     * 
+     * Model.
+     *
      * @var mixed
      */
     protected $model;
 
     /**
-     * find by ID
-     * 
+     * find by ID.
+     *
      * @param int $id
+     *
      * @return Model
      */
     public function findById($id)
@@ -24,9 +24,10 @@ abstract class EloquentAbstractRepository implements BaseRepositoryInterface
     }
 
     /**
-     * find many by IDs
-     * 
+     * find many by IDs.
+     *
      * @param array $ids
+     *
      * @return Collection
      */
     public function findManyByIds(array $ids)
@@ -38,9 +39,10 @@ abstract class EloquentAbstractRepository implements BaseRepositoryInterface
     }
 
     /**
-     * paginate
-     * 
+     * paginate.
+     *
      * @param int $limit
+     *
      * @return type
      */
     public function paginate($limit = null)
@@ -49,9 +51,10 @@ abstract class EloquentAbstractRepository implements BaseRepositoryInterface
     }
 
     /**
-     * new instance
-     * 
+     * new instance.
+     *
      * @param array $data
+     *
      * @return Model
      */
     public function instance(array $data = [])
@@ -60,8 +63,8 @@ abstract class EloquentAbstractRepository implements BaseRepositoryInterface
     }
 
     /**
-     * fill Model
-     * 
+     * fill Model.
+     *
      * @param Model $model
      * @param array $data
      */
@@ -71,10 +74,11 @@ abstract class EloquentAbstractRepository implements BaseRepositoryInterface
     }
 
     /**
-     * destroy Model
-     * 
+     * destroy Model.
+     *
      * @param Model $model
-     * @return boolean
+     *
+     * @return bool
      */
     public function destroy($model)
     {
@@ -82,9 +86,10 @@ abstract class EloquentAbstractRepository implements BaseRepositoryInterface
     }
 
     /**
-     * store Model
-     * 
+     * store Model.
+     *
      * @param Model $model
+     *
      * @return Model
      */
     public function store(&$model)
@@ -95,9 +100,10 @@ abstract class EloquentAbstractRepository implements BaseRepositoryInterface
     }
 
     /**
-     * update Model
-     * 
+     * update Model.
+     *
      * @param Model $model
+     *
      * @return Model
      */
     public function update(&$model)
@@ -106,5 +112,4 @@ abstract class EloquentAbstractRepository implements BaseRepositoryInterface
 
         return $model;
     }
-
 }

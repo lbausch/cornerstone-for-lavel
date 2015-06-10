@@ -49,23 +49,6 @@ if (!function_exists('alert')) {
         }
 
         return view('cornerstone::alerts.'.$type)
-                        ->with('message', $message);
-    }
-}
-
-if (!function_exists('trans_choice')) {
-
-    /**
-     * trans choice.
-     *
-     * @param string $key
-     * @param int    $count
-     * @param string $locale
-     *
-     * @return string
-     */
-    function trans_choice($key, $count = 0, $locale = null)
-    {
-        return Lang::choice($key, $count, $locale);
+            ->with('message', $message);
     }
 }

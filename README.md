@@ -24,14 +24,6 @@ Create a simple alert message.
   
 Example usage: `alert('error', 'This didn\'t work');`
 
-#### trans_choice
-
-Helper function for pluralization. Actually a wrapper for `Lang::choice`.
-
-`function trans_choice($key, $count = 0, $locale = null)`
-
-Example usage: `echo trans_choice('messages.apples', 10);`
-
 
 ### Macros
 

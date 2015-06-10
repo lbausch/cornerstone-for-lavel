@@ -1,7 +1,7 @@
 <?php
 
-/**
- * alert.
+/*
+ * alert
  */
 Html::macro('alert', function ($type, $message) {
     return alert($type, $message);

@@ -22,7 +22,6 @@ abstract class CornerstoneController extends BaseController
      */
     public function __construct()
     {
-
     }
 
     /**
@@ -32,7 +31,17 @@ abstract class CornerstoneController extends BaseController
      */
     public function getTitle()
     {
-        return $this->title;
+        $title = $this->title;
+
+        if (isset($this->title_suffix)) {
+            $title = $title.$this->title_suffix;
+        }
+
+        if (isset($this->title_prefix)) {
+            $title = $this->title_prefix.$title;
+        }
+
+        return $title;
     }
 
     /**

@@ -6,10 +6,10 @@ if (!function_exists('redact')) {
      * redirect to action.
      *
      * @param string $name
-     * @param array  $parameters
-     * @param int    $status
-     * @param array  $headers
-     * @param bool   $secure
+     * @param array $parameters
+     * @param int $status
+     * @param array $headers
+     * @param bool $secure
      *
      * @return Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
      */
@@ -18,7 +18,7 @@ if (!function_exists('redact')) {
         if (preg_match('/^_self@/', $name)) {
             $controller = explode('\\', strtok(Route::currentRouteAction(), '@'));
 
-            $name = preg_replace('/^_self@/', end($controller).'@', $name);
+            $name = preg_replace('/^_self@/', end($controller) . '@', $name);
         }
 
         return redirect(action($name, $parameters), $status, $headers, $secure);
@@ -48,7 +48,7 @@ if (!function_exists('alert')) {
             return;
         }
 
-        return view('cornerstone::alerts.'.$type)
+        return view('cornerstone::alerts.' . $type)
             ->with('message', $message);
     }
 }

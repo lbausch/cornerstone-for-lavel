@@ -33,7 +33,7 @@ abstract class EloquentAbstractRepository implements BaseRepositoryInterface
     public function findManyByIds(array $ids)
     {
         $models = $this->model->whereIn($this->model->getKeyName(), array_unique($ids))
-                ->get();
+            ->get();
 
         return $models;
     }

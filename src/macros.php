@@ -19,7 +19,7 @@ Html::macro('back', function ($action = null) {
         $onclick = '';
     }
 
-    return '<a href="'.$href.'" onclick="'.$onclick.'">&larr; '.trans('cornerstone::macros.back').'</a>';
+    return '<a href="' . $href . '" onclick="' . $onclick . '">&larr; ' . trans('cornerstone::macros.back') . '</a>';
 });
 
 /*

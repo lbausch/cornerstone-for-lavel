@@ -10,16 +10,16 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     public function boot()
     {
         // helpers
-        require_once __DIR__.DIRECTORY_SEPARATOR.'helpers.php';
+        require_once __DIR__ . DIRECTORY_SEPARATOR . 'helpers.php';
 
         // macros
-        require_once __DIR__.DIRECTORY_SEPARATOR.'macros.php';
+        require_once __DIR__ . DIRECTORY_SEPARATOR . 'macros.php';
 
         // load views
-        $this->loadViewsFrom(__DIR__.'/resources/views', 'cornerstone');
+        $this->loadViewsFrom(__DIR__ . '/resources/views', 'cornerstone');
 
         // load translations
-        $this->loadTranslationsFrom(__DIR__.'/resources/lang', 'cornerstone');
+        $this->loadTranslationsFrom(__DIR__ . '/resources/lang', 'cornerstone');
     }
 
     /**

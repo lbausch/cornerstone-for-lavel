@@ -2,7 +2,7 @@
   "name": "lbausch/laravel-cornerstone",
   "description": "Some helper functions for Laravel",
   "require": {
-    "php": ">=5.4.0"
+    "laravel/framework": "5.1.*"
   },
   "license": "MIT",
   "authors": [

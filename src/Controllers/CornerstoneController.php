@@ -11,6 +11,13 @@ abstract class CornerstoneController extends BaseController
     use DispatchesJobs, ValidatesRequests;
 
     /**
+     * User.
+     *
+     * @var User
+     */
+    protected $user;
+
+    /**
      * title for views.
      *
      * @var string
@@ -22,6 +29,10 @@ abstract class CornerstoneController extends BaseController
      */
     public function __construct()
     {
+        // check for authenticated User and store it for later use
+        if (auth()->check()) {
+            $this->user = &auth()->user();
+        }
     }
 
     /**

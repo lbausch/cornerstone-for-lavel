@@ -2,6 +2,7 @@
 
 namespace Bausch\LaravelCornerstone\Controllers;
 
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -13,9 +14,9 @@ abstract class CornerstoneController extends BaseController
     /**
      * User.
      *
-     * @var User
+     * @var Authenticatable
      */
-    protected $user;
+    protected $User;
 
     /**
      * title for views.
@@ -32,7 +33,7 @@ abstract class CornerstoneController extends BaseController
         // check for authenticated User
         if (auth()->check()) {
             // store User
-            $this->user = auth()->user();
+            $this->User = auth()->user();
 
             // share User to Views
             view()->share('User', auth()->user());

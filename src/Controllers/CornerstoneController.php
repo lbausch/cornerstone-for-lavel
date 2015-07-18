@@ -29,9 +29,13 @@ abstract class CornerstoneController extends BaseController
      */
     public function __construct()
     {
-        // check for authenticated User and store it for later use
+        // check for authenticated User
         if (auth()->check()) {
-            $this->user = &auth()->user();
+            // store User
+            $this->user = auth()->user();
+
+            // share User to Views
+            view()->share('User', auth()->user());
         }
     }
 

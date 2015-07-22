@@ -38,6 +38,9 @@ abstract class CornerstoneController extends BaseController
             // share User to Views
             view()->share('User', auth()->user());
         }
+
+        // share current Locale to Views
+        view()->share('locale', app()->getLocale());
     }
 
     /**

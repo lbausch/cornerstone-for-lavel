@@ -2,6 +2,7 @@
 
 namespace Bausch\LaravelCornerstone\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
@@ -38,6 +39,9 @@ abstract class CornerstoneController extends BaseController
             // share User to Views
             view()->share('User', auth()->user());
         }
+
+        // set Carbon locale
+        Carbon::setLocale(app()->getLocale());
 
         // share current Locale to Views
         view()->share('locale', app()->getLocale());

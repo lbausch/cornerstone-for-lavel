@@ -17,7 +17,7 @@ abstract class CornerstoneController extends BaseController
      *
      * @var Authenticatable
      */
-    protected $User;
+    protected $user;
 
     /**
      * title for views.
@@ -34,10 +34,10 @@ abstract class CornerstoneController extends BaseController
         // check for authenticated User
         if (auth()->check()) {
             // store User
-            $this->User = auth()->user();
+            $this->user = auth()->user();
 
             // share User to Views
-            view()->share('User', auth()->user());
+            view()->share('user', auth()->user());
         }
 
         // set Carbon locale

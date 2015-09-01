@@ -12,7 +12,7 @@ abstract class EloquentAbstractRepository implements BaseRepositoryInterface
     protected $model;
 
     /**
-     * find by ID.
+     * Find by ID.
      *
      * @param int $id
      *
@@ -24,7 +24,7 @@ abstract class EloquentAbstractRepository implements BaseRepositoryInterface
     }
 
     /**
-     * find many by IDs.
+     * Find many by IDs.
      *
      * @param array $ids
      *
@@ -39,7 +39,7 @@ abstract class EloquentAbstractRepository implements BaseRepositoryInterface
     }
 
     /**
-     * paginate.
+     * Paginate.
      *
      * @param int $limit
      *
@@ -51,7 +51,7 @@ abstract class EloquentAbstractRepository implements BaseRepositoryInterface
     }
 
     /**
-     * new instance.
+     * New instance.
      *
      * @param array $data
      *
@@ -63,7 +63,7 @@ abstract class EloquentAbstractRepository implements BaseRepositoryInterface
     }
 
     /**
-     * fill Model.
+     * Fill Model.
      *
      * @param Model $model
      * @param array $data
@@ -74,7 +74,7 @@ abstract class EloquentAbstractRepository implements BaseRepositoryInterface
     }
 
     /**
-     * destroy Model.
+     * Destroy Model.
      *
      * @param Model $model
      *
@@ -86,7 +86,7 @@ abstract class EloquentAbstractRepository implements BaseRepositoryInterface
     }
 
     /**
-     * store Model.
+     * Store Model.
      *
      * @param Model $model
      *
@@ -100,7 +100,7 @@ abstract class EloquentAbstractRepository implements BaseRepositoryInterface
     }
 
     /**
-     * update Model.
+     * Update Model.
      *
      * @param Model $model
      *

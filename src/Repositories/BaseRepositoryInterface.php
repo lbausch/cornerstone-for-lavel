@@ -5,7 +5,7 @@ namespace Bausch\LaravelCornerstone\Repositories;
 interface BaseRepositoryInterface
 {
     /**
-     * find a Model by ID.
+     * Find a Model by ID.
      *
      * @param int $id
      *
@@ -14,21 +14,21 @@ interface BaseRepositoryInterface
     public function findById($id);
 
     /**
-     * find many by IDs.
+     * Find many by IDs.
      *
      * @param Collection $ids
      */
     public function findManyByIds(array $ids);
 
     /**
-     * paginate.
+     * Paginate.
      *
      * @param type $limit
      */
     public function paginate($limit = null);
 
     /**
-     * get instance of Model.
+     * Get instance of Model.
      *
      * @param array $data
      *
@@ -37,7 +37,7 @@ interface BaseRepositoryInterface
     public function instance(array $data = []);
 
     /**
-     * fill Model.
+     * Fill Model.
      *
      * @param Model $model
      * @param array $data
@@ -45,7 +45,7 @@ interface BaseRepositoryInterface
     public function fill(&$model, array $data = []);
 
     /**
-     * destroy Model.
+     * Destroy Model.
      *
      * @param Model $model
      *
@@ -54,7 +54,7 @@ interface BaseRepositoryInterface
     public function destroy($model);
 
     /**
-     * store Model.
+     * Store Model.
      *
      * @param Model $model
      *
@@ -63,7 +63,7 @@ interface BaseRepositoryInterface
     public function store(&$model);
 
     /**
-     * update Model.
+     * Update Model.
      *
      * @param Model $model
      */

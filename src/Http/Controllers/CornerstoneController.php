@@ -1,6 +1,6 @@
 <?php
 
-namespace Bausch\LaravelCornerstone\Controllers;
+namespace Bausch\LaravelCornerstone\Http\Controllers;
 
 use Carbon\Carbon;
 use Illuminate\Contracts\Auth\Authenticatable;

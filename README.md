@@ -61,3 +61,17 @@ An interface for Repositories. See `src/Repositories/BaseRepositoryInterface.php
 #### EloquentAbstractRepository
 
 Abstract implementation for Eloquent of the above interface. Provides default implementation to extend on. See `src/Repositories/EloquentAbstractRepository.php` for actual implementation.
+
+
+### Keep alive
+
+Prevent the CSRF token from timing out. Simple send an AJAX GET request every 5 minutes to the route `bausch/laravel-cornerstone/keepalive`. Of course this is only necessary on pages which contain a `_token` field. To achieve this with jQuery use the following snippet:
+
+```js
+if ($('input[name=_token]').length > 0) {
+    setInterval(function () {
+        $.get('bausch/laravel-cornerstone/keepalive');
+    }, 3e5);
+}
+```
+

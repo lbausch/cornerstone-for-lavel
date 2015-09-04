@@ -10,7 +10,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 
 abstract class CornerstoneController extends BaseController
 {
-    use DispatchesJobs, ValidatesRequests;
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     /**
      * User.

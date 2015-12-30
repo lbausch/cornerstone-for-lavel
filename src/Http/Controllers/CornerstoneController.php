@@ -3,19 +3,14 @@
 namespace Bausch\LaravelCornerstone\Http\Controllers;
 
 use Carbon\Carbon;
-use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
-abstract class CornerstoneController extends BaseController
+class CornerstoneController extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-
     /**
      * User.
      *
-     * @var Authenticatable
+     * @var \Illuminate\Contracts\Auth\Authenticatable
      */
     protected $user;
 
@@ -26,29 +21,26 @@ abstract class CornerstoneController extends BaseController
      */
     private $title;
 
-    /**
-     * CornerstoneController constructor.
-     */
     public function __construct()
     {
-        // check for authenticated User
+        // Check for authenticated User
         if (auth()->check()) {
-            // store User
+            // Store User
             $this->user = auth()->user();
 
-            // share User to Views
+            // Share User to Views
             view()->share('user', auth()->user());
         }
 
-        // set Carbon locale
+        // Set Carbon locale
         Carbon::setLocale(app()->getLocale());
 
-        // share current Locale to Views
+        // Share current locale to Views
         view()->share('locale', app()->getLocale());
     }
 
     /**
-     * get Title.
+     * Get title.
      *
      * @return string
      */
@@ -68,7 +60,7 @@ abstract class CornerstoneController extends BaseController
     }
 
     /**
-     * set Title.
+     * Set title.
      *
      * @param string $title
      */

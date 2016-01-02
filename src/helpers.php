@@ -52,3 +52,68 @@ if (!function_exists('alert')) {
             ->with('message', $message);
     }
 }
+
+if (!function_exists('is_active')) {
+
+    /**
+     * Returns the string "active" if the given Controller name or action matches the current Route. Useful for Views.
+     *
+     * @param string|array $needles
+     * @param string|array $css_classes
+     *
+     * @return string
+     */
+    function is_active($needles, $css_classes = ['active'])
+    {
+        // Convert $needles to array
+        if (!is_array($needles)) {
+            $needles = [$needles];
+        }
+
+        // Convert $css_classes to array
+        if (!is_array($css_classes)) {
+            $css_classes = [$css_classes];
+        }
+
+        // Iterate over given needle
+        foreach ($needles as $needle) {
+            // Detect mode
+            $mode = 'action';
+
+            if (strpos($needle, '@') === false) {
+                $mode = 'controller';
+            }
+
+            // Get current Route and Action
+            $route = Route::getCurrentRoute();
+            $action = $route->getAction();
+
+            $controller_namespaced = $action['controller']; // e.g. App\Http\Controllers\FooController@index
+            $namespace = $action['namespace']; // e.g. App\Http\Controllers
+
+            // Remove namespace from controller (+ 1 also removes leading backslash)
+            $controller = substr($controller_namespaced, strspn($namespace, $controller_namespaced) + 1);
+
+            switch ($mode) {
+                case  'action':
+                    // If $needle matches $controller return whitespace glued $css_classes
+                    if ($needle === $controller) {
+                        return implode(' ', $css_classes);
+                    }
+                    break;
+                case 'controller':
+                    // Remove the action part from $controller "...@index"
+                    $controller_name = explode('@', $controller);
+
+                    // If $needle matches $controller_name return whitespace glued $css_classes
+                    if (isset($controller_name[0]) && $controller_name[0] == $needle) {
+                        return implode(' ', $css_classes);
+                    }
+                    break;
+            }
+        }
+
+        // Return empty string by default
+        return '';
+    }
+}

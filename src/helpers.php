@@ -117,3 +117,18 @@ if (!function_exists('is_active')) {
         return '';
     }
 }
+
+if (!function_exists('link_back')) {
+
+    /**
+     * Generate back link.
+     *
+     * @param string|null $target
+     *
+     * @return string
+     */
+    function link_back($target = null)
+    {
+        return '<a href="'.($target ? $target : '/').'" '.(!$target ? 'onclick="window.history.back();return false;"' : '').'>&larr; '.trans('cornerstone::helpers.link_back').'</a>';
+    }
+}

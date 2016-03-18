@@ -6,14 +6,6 @@ Some helper functions for Laravel
 
 ### Helper functions
 
-#### redact
-
-For use in controller methods. Replaces the `redirect(action('SomeController@someMethod'))` construct.
-
-`function redact($name, $parameters = array(), $status = 302, $headers = array(), $secure = null)`
-
-Added bonus: Use `_self` to refer to the Controller the function is called in. For example: `return redact('_self@index');`.
-
 #### alert
 
 Create a simple alert message.
@@ -24,33 +16,29 @@ Create a simple alert message.
   
 Example usage: `alert('error', 'This didn\'t work');`
 
-
-### Macros
-
-#### alert
-
-Wrapper for `alert()` (see above) to use in Views.
-
-`Html::macro('alert', function($type, $message)`
-
-Example usage: `Html::alert('error', 'This didn\'t work')`
-
-#### back
-
-Renders a back link. Takes an optional action or tries to use JavaScript.
-
-`Html::macro('back', function($action = null)`
-
-Example usage: `Html::back()` or `Html::back('SomeController@someMethod')`
-
 #### is_active
 
-Checks if current request matches certain controllers and returns `active` if so. Useful for highlighting corresponding navigation items.
+Checks if current request matches certain controllers and returns the string `active` if so. Useful for highlighting corresponding navigation items.
 
-`Html::macro('is_active', function($controllers, array $css_classes = ['active'])`
+`function is_active($needles, $css_classes = ['active'])`
 
-Example usage: `Html::is_active('SomeController')` or `Html::is_active(['SomeController', 'OtherController'])`. You may also specify the css classes to return with `$css_classes`.
+Example usage: `is_active('SomeController')` or `is_active(['SomeController', 'OtherController'])`. You may also specify the css classes to return with `$css_classes`.
 
+#### link_back
+
+Renders a back link. Takes an optional link or tries to use JavaScript.
+
+`function link_back($target = null)`
+
+Example usage: `link_back()` or `link_back(action('SomeController@someMethod'))`
+
+#### redact
+
+For use in controller methods. Replaces the `redirect(action('SomeController@someMethod'))` construct.
+
+`function redact($name, $parameters = array(), $status = 302, $headers = array(), $secure = null)`
+
+Added bonus: Use `_self` to refer to the Controller the function is called in. For example: `return redact('_self@index');`.
 
 ### Repositories
 
@@ -70,8 +58,7 @@ Prevent the CSRF token from timing out. Simple send an AJAX GET request every 5 
 ```js
 if ($('input[name=_token]').length > 0) {
     setInterval(function () {
-        $.get('bausch/laravel-cornerstone/keepalive');
+        $.get('lbausch/laravel-cornerstone/keepalive');
     }, 3e5);
 }
 ```
-

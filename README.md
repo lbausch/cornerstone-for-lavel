@@ -53,7 +53,7 @@ Abstract implementation for Eloquent of the above interface. Provides default im
 
 ### Keep alive
 
-Prevent the CSRF token from timing out. Simple send an AJAX GET request every 5 minutes to the route `bausch/laravel-cornerstone/keepalive`. Of course this is only necessary on pages which contain a `_token` field. To achieve this with jQuery use the following snippet:
+Prevent the CSRF token from timing out. Simple send an AJAX GET request every 5 minutes to the route `lbausch/laravel-cornerstone/keepalive`. Of course this is only necessary on pages which contain a `_token` field. To achieve this with jQuery use the following snippet:
 
 ```js
 if ($('input[name=_token]').length > 0) {

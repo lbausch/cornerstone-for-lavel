@@ -12,7 +12,7 @@ Create a simple alert message.
 
 `function alert($type, $message)`
 
-`$alert` can be one of `info`, `warning`, `error` or `success`. Requires Twitter Bootstrap to be displayed correctly.
+`$type` can be one of `info`, `warning`, `error` or `success`. Requires Twitter Bootstrap to be displayed correctly.
   
 Example usage: `alert('error', 'This didn\'t work');`
 

@@ -33,7 +33,7 @@ if (!function_exists('alert')) {
      * @param string $type
      * @param string $message
      *
-     * @return Response
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
      */
     function alert($type, $message)
     {

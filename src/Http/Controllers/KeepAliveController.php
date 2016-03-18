@@ -7,7 +7,7 @@ use Illuminate\Routing\Controller as BaseController;
 class KeepAliveController extends BaseController
 {
     /**
-     * Keep alive (204 No Content).
+     * Keep alive (204: No Content).
      *
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
      */

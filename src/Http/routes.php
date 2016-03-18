@@ -2,4 +2,4 @@
 
 use Bausch\LaravelCornerstone\Http\Controllers\KeepAliveController;
 
-Route::get('bausch/laravel-cornerstone/keepalive', KeepAliveController::class.'@keepalive');
+Route::get('lbausch/laravel-cornerstone/keepalive', KeepAliveController::class.'@keepalive');

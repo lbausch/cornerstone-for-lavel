@@ -12,18 +12,15 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         // Helpers
         require_once __DIR__.DIRECTORY_SEPARATOR.'helpers.php';
 
-        // Macros
-        require_once __DIR__.DIRECTORY_SEPARATOR.'macros.php';
-
         // Load views
-        $this->loadViewsFrom(__DIR__.'/resources/views', 'cornerstone');
+        $this->loadViewsFrom(__DIR__.DIRECTORY_SEPARATOR.'resources'.DIRECTORY_SEPARATOR.'views', 'cornerstone');
 
         // Load translations
-        $this->loadTranslationsFrom(__DIR__.'/resources/lang', 'cornerstone');
+        $this->loadTranslationsFrom(__DIR__.DIRECTORY_SEPARATOR.'resources'.DIRECTORY_SEPARATOR.'lang', 'cornerstone');
 
         // Register route
         if (!$this->app->routesAreCached()) {
-            require __DIR__.'/Http/routes.php';
+            require __DIR__.DIRECTORY_SEPARATOR.'Http'.DIRECTORY_SEPARATOR.'routes.php';
         }
     }
 

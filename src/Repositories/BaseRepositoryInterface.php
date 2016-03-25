@@ -16,7 +16,7 @@ interface BaseRepositoryInterface
     /**
      * Find many by IDs.
      *
-     * @param Collection $ids
+     * @param array $ids
      */
     public function findManyByIds(array $ids);
 
@@ -39,15 +39,15 @@ interface BaseRepositoryInterface
     /**
      * Fill Model.
      *
-     * @param Model $model
+     * @param mixed $model
      * @param array $data
      */
-    public function fill(&$model, array $data = []);
+    public function fill($model, array $data = []);
 
     /**
      * Destroy Model.
      *
-     * @param Model $model
+     * @param mixed $model
      *
      * @return bool
      */
@@ -56,16 +56,16 @@ interface BaseRepositoryInterface
     /**
      * Store Model.
      *
-     * @param Model $model
+     * @param mixed $model
      *
-     * @return Model
+     * @return mixed
      */
-    public function store(&$model);
+    public function store($model);
 
     /**
      * Update Model.
      *
-     * @param Model $model
+     * @param mixed $model
      */
-    public function update(&$model);
+    public function update($model);
 }

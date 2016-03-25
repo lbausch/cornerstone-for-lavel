@@ -16,7 +16,7 @@ abstract class EloquentAbstractRepository implements BaseRepositoryInterface
      *
      * @param int $id
      *
-     * @return Model
+     * @return mixed
      */
     public function findById($id)
     {
@@ -28,7 +28,7 @@ abstract class EloquentAbstractRepository implements BaseRepositoryInterface
      *
      * @param array $ids
      *
-     * @return Collection
+     * @return \Illuminate\Database\Eloquent\Collection
      */
     public function findManyByIds(array $ids)
     {
@@ -43,7 +43,7 @@ abstract class EloquentAbstractRepository implements BaseRepositoryInterface
      *
      * @param int $limit
      *
-     * @return type
+     * @return \Illuminate\Database\Eloquent\Collection
      */
     public function paginate($limit = null)
     {
@@ -65,10 +65,10 @@ abstract class EloquentAbstractRepository implements BaseRepositoryInterface
     /**
      * Fill Model.
      *
-     * @param Model $model
+     * @param mixed $model
      * @param array $data
      */
-    public function fill(&$model, array $data = array())
+    public function fill($model, array $data = [])
     {
         $model->fill($data);
     }
@@ -76,7 +76,7 @@ abstract class EloquentAbstractRepository implements BaseRepositoryInterface
     /**
      * Destroy Model.
      *
-     * @param Model $model
+     * @param mixed $model
      *
      * @return bool
      */
@@ -88,11 +88,11 @@ abstract class EloquentAbstractRepository implements BaseRepositoryInterface
     /**
      * Store Model.
      *
-     * @param Model $model
+     * @param mixed $model
      *
-     * @return Model
+     * @return mixed
      */
-    public function store(&$model)
+    public function store($model)
     {
         $model->save();
 
@@ -102,11 +102,11 @@ abstract class EloquentAbstractRepository implements BaseRepositoryInterface
     /**
      * Update Model.
      *
-     * @param Model $model
+     * @param mixed $model
      *
-     * @return Model
+     * @return mixed
      */
-    public function update(&$model)
+    public function update($model)
     {
         $this->store($model);
 

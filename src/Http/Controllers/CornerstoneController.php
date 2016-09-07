@@ -8,13 +8,6 @@ use Illuminate\Routing\Controller as BaseController;
 class CornerstoneController extends BaseController
 {
     /**
-     * User.
-     *
-     * @var \Illuminate\Contracts\Auth\Authenticatable
-     */
-    protected $user;
-
-    /**
      * title for views.
      *
      * @var string
@@ -23,15 +16,6 @@ class CornerstoneController extends BaseController
 
     public function __construct()
     {
-        // Check for authenticated User
-        if (auth()->check()) {
-            // Store User
-            $this->user = auth()->user();
-
-            // Share User to Views
-            view()->share('user', auth()->user());
-        }
-
         // Set Carbon locale
         Carbon::setLocale(app()->getLocale());
 
@@ -69,5 +53,19 @@ class CornerstoneController extends BaseController
         $this->title = $title;
 
         view()->share('title', $this->getTitle());
+    }
+
+    /**
+     * Get.
+     *
+     * @param string $name
+     *
+     * @return \Illuminate\Contracts\Auth\Authenticatable|null
+     */
+    public function __get($name)
+    {
+        if ($name == 'user' && auth()->user()) {
+            return auth()->user();
+        }
     }
 }

@@ -2,6 +2,9 @@
 
 namespace Bausch\LaravelCornerstone;
 
+use View;
+use Bausch\LaravelCornerstone\Providers\ViewComposerServiceProvider;
+
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
     /**
@@ -22,6 +25,9 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         if (!$this->app->routesAreCached()) {
             require __DIR__.DIRECTORY_SEPARATOR.'Http'.DIRECTORY_SEPARATOR.'routes.php';
         }
+
+        // View Composer
+        View::composer('*', ViewComposerServiceProvider::class);
     }
 
     /**

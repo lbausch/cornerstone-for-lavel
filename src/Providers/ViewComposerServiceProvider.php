@@ -21,7 +21,9 @@ class ViewComposerServiceProvider
         $user = auth()->user();
 
         if ($user) {
-            view()->share('user', auth()->user());
+            $view->with([
+                'user', $user,
+            ]);
         }
     }
 }

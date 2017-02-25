@@ -1,7 +1,8 @@
 <?php
 
-if (!function_exists('redact')) {
+use Illuminate\Container\Container;
 
+if (!function_exists('redact')) {
     /**
      * Redirect to action.
      *
@@ -21,12 +22,15 @@ if (!function_exists('redact')) {
             $name = preg_replace('/^_self@/', end($controller).'@', $name);
         }
 
-        return redirect(action($name, $parameters), $status, $headers, $secure);
+        $container = Container::getInstance();
+
+        $action = $container->make('url')->action($name, $parameters);
+
+        return $container->make('redirect')->to($action, $status, $headers, $secure);
     }
 }
 
 if (!function_exists('alert')) {
-
     /**
      * Alert view.
      *
@@ -54,7 +58,6 @@ if (!function_exists('alert')) {
 }
 
 if (!function_exists('is_active')) {
-
     /**
      * Returns the string "active" if the given Controller name or action matches the current Route. Useful for Views.
      *
@@ -119,7 +122,6 @@ if (!function_exists('is_active')) {
 }
 
 if (!function_exists('link_back')) {
-
     /**
      * Generate back link.
      *

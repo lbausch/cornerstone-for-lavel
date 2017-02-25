@@ -2,8 +2,8 @@
 
 namespace Bausch\LaravelCornerstone;
 
-use View;
 use Bausch\LaravelCornerstone\Providers\ViewComposerServiceProvider;
+use View;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {

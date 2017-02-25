@@ -2,9 +2,9 @@
 
 namespace Tests;
 
-class FooTest extends TestCase
+class HelpersTest extends TestCase
 {
-    public function test_redact()
+    public function testRedactHelper()
     {
         $url = redact(\Bausch\LaravelCornerstone\Http\Controllers\KeepAliveController::class.'@keepalive');
 

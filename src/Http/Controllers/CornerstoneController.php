@@ -3,10 +3,10 @@
 namespace Bausch\LaravelCornerstone\Http\Controllers;
 
 use Carbon\Carbon;
-use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Auth\Factory as AuthFactory;
 use Illuminate\Contracts\View\Factory as ViewFactory;
+use Illuminate\Routing\Controller as BaseController;
 
 class CornerstoneController extends BaseController
 {

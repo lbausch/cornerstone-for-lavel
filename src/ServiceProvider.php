@@ -21,10 +21,8 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         // Load translations
         $this->loadTranslationsFrom(__DIR__.DIRECTORY_SEPARATOR.'resources'.DIRECTORY_SEPARATOR.'lang', 'cornerstone');
 
-        // Register route
-        if (!$this->app->routesAreCached()) {
-            require __DIR__.DIRECTORY_SEPARATOR.'Http'.DIRECTORY_SEPARATOR.'routes.php';
-        }
+        // Load routes
+        $this->loadRoutesFrom(__DIR__.DIRECTORY_SEPARATOR.'Http'.DIRECTORY_SEPARATOR.'routes.php');
 
         // View Composer
         View::composer('*', ViewComposerServiceProvider::class);

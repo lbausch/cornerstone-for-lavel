@@ -54,7 +54,9 @@ if (!function_exists('alert')) {
             return;
         }
 
-        return app(ViewFactory::class)->make('cornerstone::alerts.'.$type, [
+        $container = Container::getInstance();
+
+        return $container->make(ViewFactory::class)->make('cornerstone::alerts.'.$type, [
             'message' => $message,
         ]);
     }

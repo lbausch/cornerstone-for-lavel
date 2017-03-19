@@ -2,15 +2,12 @@
 
 namespace Bausch\LaravelCornerstone\Providers;
 
+use Illuminate\Container\Container;
+use Illuminate\Contracts\Auth\Factory as AuthFactory;
 use Illuminate\View\View;
 
 class ViewComposerServiceProvider
 {
-    public function __construct()
-    {
-        // stub
-    }
-
     /**
      * Compose.
      *
@@ -18,7 +15,7 @@ class ViewComposerServiceProvider
      */
     public function compose(View $view)
     {
-        $user = auth()->user();
+        $user = Container::getInstance()->make(AuthFactory::class)->user();
 
         if ($user) {
             $view->with([

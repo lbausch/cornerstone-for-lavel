@@ -1,5 +1,7 @@
 # Laravel Cornerstone
 
+[![Build Status](https://travis-ci.org/lbausch/laravel-cornerstone.svg?branch=master)](https://travis-ci.org/lbausch/laravel-cornerstone)
+
 Some helper functions for Laravel
 
 ## Documentation

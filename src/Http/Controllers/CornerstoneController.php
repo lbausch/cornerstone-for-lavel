@@ -3,24 +3,30 @@
 namespace Bausch\LaravelCornerstone\Http\Controllers;
 
 use Carbon\Carbon;
+use Illuminate\Container\Container;
+use Illuminate\Contracts\Auth\Factory as AuthFactory;
+use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\Routing\Controller as BaseController;
 
 class CornerstoneController extends BaseController
 {
     /**
-     * title for views.
+     * Title for views.
      *
      * @var string
      */
-    private $title;
+    protected $title;
 
+    /**
+     * CornerstoneController constructor.
+     */
     public function __construct()
     {
         // Set Carbon locale
-        Carbon::setLocale(app()->getLocale());
+        Carbon::setLocale(Container::getInstance()->getLocale());
 
         // Share current locale to Views
-        view()->share('locale', app()->getLocale());
+        $this->getViewService()->share('locale', app()->getLocale());
     }
 
     /**
@@ -52,7 +58,7 @@ class CornerstoneController extends BaseController
     {
         $this->title = $title;
 
-        view()->share('title', $this->getTitle());
+        $this->getViewService()->share('title', $this->getTitle());
     }
 
     /**
@@ -64,8 +70,38 @@ class CornerstoneController extends BaseController
      */
     public function __get($name)
     {
-        if ($name == 'user' && auth()->user()) {
-            return auth()->user();
+        if ($name == 'user' && $this->getAuthManager()->user()) {
+            return $this->getAuthManager()->user();
         }
+    }
+
+    /**
+     * Get Auth manager.
+     *
+     * @return AuthFactory
+     */
+    protected function getAuthManager()
+    {
+        return $this->getContainerInstance()->make(AuthFactory::class);
+    }
+
+    /**
+     * Get view service.
+     *
+     * @return ViewFactory
+     */
+    protected function getViewService()
+    {
+        return $this->getContainerInstance()->make(ViewFactory::class);
+    }
+
+    /**
+     * Get Container.
+     *
+     * @return Container
+     */
+    protected function getContainerInstance()
+    {
+        return Container::getInstance();
     }
 }

@@ -1,7 +1,9 @@
 <?php
 
-if (!function_exists('redact')) {
+use Illuminate\Container\Container;
+use Illuminate\Contracts\View\Factory as ViewFactory;
 
+if (!function_exists('redact')) {
     /**
      * Redirect to action.
      *
@@ -21,12 +23,15 @@ if (!function_exists('redact')) {
             $name = preg_replace('/^_self@/', end($controller).'@', $name);
         }
 
-        return redirect(action($name, $parameters), $status, $headers, $secure);
+        $container = Container::getInstance();
+
+        $action = $container->make('url')->action($name, $parameters);
+
+        return $container->make('redirect')->to($action, $status, $headers, $secure);
     }
 }
 
 if (!function_exists('alert')) {
-
     /**
      * Alert view.
      *
@@ -37,6 +42,7 @@ if (!function_exists('alert')) {
      */
     function alert($type, $message)
     {
+        // Available alert types
         $alerts = [
             'info',
             'warning',
@@ -48,13 +54,15 @@ if (!function_exists('alert')) {
             return;
         }
 
-        return view('cornerstone::alerts.'.$type)
-            ->with('message', $message);
+        $container = Container::getInstance();
+
+        return $container->make(ViewFactory::class)->make('cornerstone::alerts.'.$type, [
+            'message' => $message,
+        ]);
     }
 }
 
 if (!function_exists('is_active')) {
-
     /**
      * Returns the string "active" if the given Controller name or action matches the current Route. Useful for Views.
      *
@@ -75,7 +83,10 @@ if (!function_exists('is_active')) {
             $css_classes = [$css_classes];
         }
 
-        // Iterate over given needle
+        // $found_matches indicator
+        $found_matches = false;
+
+        // Iterate over given needles
         foreach ($needles as $needle) {
             // Detect mode
             $mode = 'action';
@@ -85,8 +96,8 @@ if (!function_exists('is_active')) {
             }
 
             // Get current Route and Action
-            $route = Route::getCurrentRoute();
-            $action = $route->getAction();
+            $current_route = Container::getInstance()->make('router')->getCurrentRoute();
+            $action = $current_route->getAction();
 
             $controller_namespaced = $action['controller']; // e.g. App\Http\Controllers\FooController@index
             $namespace = $action['namespace']; // e.g. App\Http\Controllers
@@ -96,30 +107,26 @@ if (!function_exists('is_active')) {
 
             switch ($mode) {
                 case  'action':
-                    // If $needle matches $controller return whitespace glued $css_classes
                     if ($needle === $controller) {
-                        return implode(' ', $css_classes);
+                        $found_matches = true;
                     }
                     break;
                 case 'controller':
                     // Remove the action part from $controller "...@index"
                     $controller_name = explode('@', $controller);
 
-                    // If $needle matches $controller_name return whitespace glued $css_classes
                     if (isset($controller_name[0]) && $controller_name[0] == $needle) {
-                        return implode(' ', $css_classes);
+                        $found_matches = true;
                     }
                     break;
             }
         }
 
-        // Return empty string by default
-        return '';
+        return $found_matches ? implode(' ', $css_classes) : '';
     }
 }
 
 if (!function_exists('link_back')) {
-
     /**
      * Generate back link.
      *

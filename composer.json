@@ -4,6 +4,10 @@
   "require": {
     "laravel/framework": "5.4.*"
   },
+  "require-dev": {
+    "orchestra/testbench": "~3.0",
+    "phpunit/phpunit": "~5.7"
+  },
   "license": "MIT",
   "authors": [
     {
@@ -15,6 +19,15 @@
     "psr-4": {
       "Bausch\\LaravelCornerstone\\": "src"
     }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true
   },
   "minimum-stability": "stable"
 }

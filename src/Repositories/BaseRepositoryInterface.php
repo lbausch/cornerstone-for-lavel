@@ -23,7 +23,7 @@ interface BaseRepositoryInterface
     /**
      * Paginate.
      *
-     * @param type $limit
+     * @param int $limit
      */
     public function paginate($limit = null);
 

@@ -3,7 +3,8 @@
 namespace Bausch\LaravelCornerstone;
 
 use Bausch\LaravelCornerstone\Providers\ViewComposerServiceProvider;
-use View;
+use Illuminate\Container\Container;
+use Illuminate\Contracts\View\Factory as ViewFactory;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
@@ -25,7 +26,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $this->loadRoutesFrom(__DIR__.DIRECTORY_SEPARATOR.'Http'.DIRECTORY_SEPARATOR.'routes.php');
 
         // View Composer
-        View::composer('*', ViewComposerServiceProvider::class);
+        Container::getInstance()->make(ViewFactory::class)->composer('*', ViewComposerServiceProvider::class);
     }
 
     /**
